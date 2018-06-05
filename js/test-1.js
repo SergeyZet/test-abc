@@ -1,4 +1,4 @@
-
+var test = document.querySelector('.test');
 //start-scr
 var startScreen = document.querySelector('.test-wraper-start');
 var btnStart = document.querySelector('#start-btn');
@@ -10,6 +10,7 @@ var table2 = testContent.querySelector('.table-letter2');
 var table3 = testContent.querySelector('.table-letter3');
 var btn = document.querySelector('#test-abc');
 var rotateContent = document.querySelector('.test-block__lesson-wrap');
+var timerBlock = document.querySelector('.test-block__timers');
 var timer = document.querySelectorAll('.test-timer');
 var btnOverlay = document.querySelector('.btn-overlay');
 //scrin-hint
@@ -21,6 +22,8 @@ var abcHintOk = document.querySelector('#adc-hint-ok');
 //result-scr 
 var testResult = document.querySelector('.test-wraper-result');
 var btnResult = testResult.querySelector('#btn-result');
+var resultBlock = testResult.querySelector('.result-block__text');
+var arrBestRes = [];
 
 //timer------------
 var a = 0;
@@ -31,7 +34,7 @@ var timeResult = [];
 var timerVal = 0;
 var minute = 0;
 var timerStart;
-var e = ['Отлично! А теперь попробуй прочитать парам.', 'Хорошо! А теперь прочитай тройками))).']
+var t = ['Отлично! А теперь попробуй прочитать парам.', 'Хорошо! А теперь прочитай тройками))).']
 console.log(btnStart);
 // timer start---------
 function onTimer(arg) {
@@ -82,6 +85,7 @@ btnStart.addEventListener('click', function() {
 			table2.classList.remove('hidden');
 			break;
 			case 3: 
+			timerBlock.removeChild(timer[timer.length-1]);
 			table2.classList.add('hidden');
 			table3.classList.remove('hidden');
 			break;
@@ -89,6 +93,7 @@ btnStart.addEventListener('click', function() {
 		console.log(a);
 	}
 });
+
 btn.addEventListener('click', function() {
 	console.log('This is '+d);
 	if (b<5) {
@@ -104,74 +109,124 @@ btn.addEventListener('click', function() {
 			stopTimer(b);
 			break;
 			case 2 : 
-			rotateContent.style.transform = 'rotate(180deg)';
+			if (a==3) {
+				rotateContent.style.transform = 'rotate(270deg)';
+				hintContent.textContent = 'снизу-вверх';
+
+			} else {
+				rotateContent.style.transform = 'rotate(180deg)';
+				hintContent.textContent = 'вверх ногами';
+			}
 			rotateContent.classList.add('hidden');
 			abcHint.classList.remove('hidden');
 			btnOverlay.classList.remove('hidden');
-			hintContent.textContent = 'вверх ногами';
 			styleNextTimer(b);
 			stopTimer(b);
 			break;
 			case 3 : 
-			rotateContent.style.transform = 'rotate(270deg)';
+			if (a == 3) {
+				rotateContent.style.transform = 'rotate(360deg)';
+				hintContent.textContent = 'на скорость';
+			} else {
+				rotateContent.style.transform = 'rotate(270deg)';
+				hintContent.textContent = 'снизу-вверх';
+			}
 			rotateContent.classList.add('hidden');
 			abcHint.classList.remove('hidden');
 			btnOverlay.classList.remove('hidden');
-			hintContent.textContent = 'снизу-вверх';
 			styleNextTimer(b);
 			stopTimer(b);
 			break;
 			case 4 : 
-			rotateContent.style.transform = 'rotate(360deg)';
-			rotateContent.classList.add('hidden');
-			abcHint.classList.remove('hidden');
-			btnOverlay.classList.remove('hidden');
-			hintContent.textContent = 'на скорость';
-			styleNextTimer(b);
-			stopTimer(b);
-			break;
+			if (a==3) {
+				b++;
+			}else {
+				rotateContent.style.transform = 'rotate(360deg)';
+				rotateContent.classList.add('hidden');
+				abcHint.classList.remove('hidden');
+				btnOverlay.classList.remove('hidden');
+				hintContent.textContent = 'на скорость';
+				styleNextTimer(b);
+				stopTimer(b);
+				break;
+			}
 			default : 
 			clearInterval(timerStart);
-			timeRes(b);
-			startScreen.classList.remove('hidden');
+			if (a==3) {
+				timeRes(b-1);
+			} else {
+				timeRes(b);
+			}
+			testResult.classList.remove('hidden');
 			testContent.classList.add('hidden');
 			var bestTime = Math.min.apply(null, timeResult);
+			arrBestRes.push(bestTime);
+			var resultMin ;
+			var resultSec1;
+			var resultSec2;
+			if (a==1) {
+				resultMin = Math.floor(arrBestRes[a-1]/60);
+				resultSec = (arrBestRes[a-1]-resultMin*60);
+				if (resultSec<10) {
+					resultSec = '0' + resultSec;
+				}
+				resultBlock.textContent = resultMin+' : '+resultSec;
+			}
+			if (a==2) {
+				resultMin = Math.floor(arrBestRes[a-1]/60);
+				resultSec = (arrBestRes[a-1]-resultMin*60);
+				if (resultSec<10) {
+					resultSec = '0' + resultSec;
+				}
+				resultBlock.textContent = resultMin+' : '+resultSec;
+			}
+			if (a==3) {
+				resultMin = Math.floor(arrBestRes[a-1]/60);
+				resultSec = (arrBestRes[a-1]-resultMin*60);
+				if (resultSec<10) {
+					resultSec = '0' + resultSec;
+				}
+				resultBlock.textContent = resultMin+' : '+resultSec;
+			}
+			
 			for (i = 0; i<timer.length; i++) {
 				timerVal = '00';
 				minute = 0;
 				timer[i].textContent = minute + ' : ' + timerVal;
 				timer[i].classList.add('disabled');
 			};
-		timer[0].classList.remove('disabled');
-		timer[timer.length-1].classList.remove('test-timer--active');
-		console.log(timer[4].innerHTML.split(''));
-		console.log(timeResult);
-		console.log(bestTime);
+			timer[0].classList.remove('disabled');
+			timer[timer.length-1].classList.remove('test-timer--active');
+			console.log(timer[4].innerHTML.split(''));
+			console.log(timeResult);
+			console.log(bestTime);
+			timeResult.length = 0;
+		};
 	};
-};
-if(a==3 && b==5) {
-				testContent.classList.add('hidden');
-				testResult.classList.remove('hidden');
-				startScreen.classList.add('hidden');
-			}
-if (a==1) {
-	startScreenContent.textContent= e[0];
-} else if(a==2){
-	startScreenContent.textContent= e[1];
-}
+	if (a==1) {
+		startScreenContent.textContent= t[0];
+	} else if(a==2){
+		startScreenContent.textContent= t[1];
+	}
 });
 abcHintOk.addEventListener('click', function() {
 	if(c<5) {
 		c++;
-		rotateContent.classList.remove('hidden');
-		abcHint.classList.add('hidden');
-		btnOverlay.classList.add('hidden');
-		onTimer(c);
-		console.log(c);
-	}
+	rotateContent.classList.remove('hidden');
+	abcHint.classList.add('hidden');
+	btnOverlay.classList.add('hidden');
+	onTimer(c);
+	console.log(c);
+}
 });
 btnResult.addEventListener('click', function() {
-	location.reload();
+	if (a==3) {
+		location.reload();
+	} else {
+		testResult.classList.add('hidden');
+		startScreen.classList.remove('hidden');
+	}
+	
 });
 //modal-hint
 //modalHint
