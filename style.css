@@ -1754,7 +1754,7 @@ p {
 }
 @media (max-height: 920px) {
   .test-wraper-2 {
-    margin-top: 20px;
+    margin-top: 22px;
   }
 }
 .test-block__lesson {
@@ -1770,8 +1770,8 @@ p {
 }
 @media (max-height: 920px) {
   .test-block__lesson {
-    width: 645px;
-    height: 645px;
+    width: 641px;
+    height: 641px;
     margin-left: 20px;
   }
 }
@@ -1781,8 +1781,8 @@ p {
 }
 @media (max-height: 920px) {
   .test-block__lesson-wrap {
-    width: 645px;
-    height: 645px;
+    width: 641px;
+    height: 641px;
   }
 }
 .test-block__lesson table {
@@ -1809,7 +1809,7 @@ p {
 }
 @media (max-height: 920px) {
   .test-block__lesson .table-letter td {
-    padding: 15px 36px;
+    padding: 14px 35px;
   }
 }
 .test-block__lesson .table-letter2 {
@@ -1825,7 +1825,7 @@ p {
 }
 @media (max-height: 920px) {
   .test-block__lesson .table-letter2 td {
-    padding: 15px 23px;
+    padding: 14px 22px;
   }
 }
 .test-block__lesson .table-letter3 {
@@ -1833,7 +1833,7 @@ p {
 }
 @media (max-height: 920px) {
   .test-block__lesson .table-letter3 {
-    font-size: 45px;
+    font-size: 44px;
   }
 }
 .test-block__lesson .table-letter3 td {
@@ -1841,7 +1841,7 @@ p {
 }
 @media (max-height: 920px) {
   .test-block__lesson .table-letter3 td {
-    padding: 20px 6px;
+    padding: 20px 7px;
   }
 }
 .test-block__lesson .active-td {
