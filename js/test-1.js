@@ -221,7 +221,7 @@ abcHintOk.addEventListener('click', function() {
 });
 btnResult.addEventListener('click', function() {
 	if (a==3) {
-		location.reload();
+		location.replace('https://sergeyzet.github.io/ufo/');
 	} else {
 		testResult.classList.add('hidden');
 		startScreen.classList.remove('hidden');
