@@ -34,8 +34,18 @@ var timeResult = [];
 var timerVal = 0;
 var minute = 0;
 var timerStart;
-var t = ['Отлично! А теперь попробуй прочитать парам.', 'Хорошо! А теперь прочитай тройками))).']
+var t = ['Отлично! А теперь попробуй прочитать парами.', 'Хорошо! А теперь прочитай тройками))).'];
+var tableContent1 = ['A','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
+var tableContent2 = ['ба','бо','бу','бы','бэ','бя','бё','бю','би','бе','ва','во','ву','вы','вэ','вя','вё','вю','ви','ве','га','го','гу','гы','гэ','гя','гё','гю','ги','ге'];
+var tableContent3 = ['кра','кро','кру','кры','крэ','кря','крё','крю','кри','кре','лна','лно','лну','лны','лнэ','зля','злё','злю','зли','зле','мна','мно','мну','мны','мнэ','мня','мнё','мню','мни','мне'];
+var table = document.querySelector('.table-letter');
+var td = table.querySelectorAll('td');
 console.log(btnStart);
+function tableContent (arr) {
+	for (var i=0; i<arr.length; i++) {
+		td[i].textContent = arr[i];
+	}
+}
 // timer start---------
 function onTimer(arg) {
 	timerStart = setInterval(function() {
@@ -69,6 +79,7 @@ function timeRes(arg) {
 	timeResult.push(time);
 }
 console.log(timer[1]);
+
 //step start-scr
 btnStart.addEventListener('click', function() {
 	startScreen.classList.add('hidden');
@@ -81,21 +92,24 @@ btnStart.addEventListener('click', function() {
 		a++;
 		switch(a) {
 			case 2: 
-			table1.classList.add('hidden');
-			table2.classList.remove('hidden');
+			tableContent (tableContent2);
+			table1.classList.add('table-letter2');
+			table1.classList.remove('table-letter');
+			
 			break;
 			case 3: 
+			tableContent (tableContent3);
 			timerBlock.removeChild(timer[timer.length-1]);
-			table2.classList.add('hidden');
-			table3.classList.remove('hidden');
+			table1.classList.add('table-letter3');
+			table1.classList.remove('table-letter2');
 			break;
 		}
 		console.log(a);
 	}
 });
 
-btn.addEventListener('click', function() {
-	console.log('This is '+d);
+btn.addEventListener('click', function(e) {
+	console.log(e);
 	if (b<5) {
 		b++;
 		switch(b) {
@@ -212,12 +226,12 @@ btn.addEventListener('click', function() {
 abcHintOk.addEventListener('click', function() {
 	if(c<5) {
 		c++;
-	rotateContent.classList.remove('hidden');
-	abcHint.classList.add('hidden');
-	btnOverlay.classList.add('hidden');
-	onTimer(c);
-	console.log(c);
-}
+		rotateContent.classList.remove('hidden');
+		abcHint.classList.add('hidden');
+		btnOverlay.classList.add('hidden');
+		onTimer(c);
+		console.log(c);
+	}
 });
 btnResult.addEventListener('click', function() {
 	if (a==3) {
@@ -242,3 +256,21 @@ closeHint.addEventListener('click', function() {
 	modalHint.classList.add('hidden');
 	hintOver.classList.add('hidden');
 });
+/*---------------------------------space----------------------------------*/
+window.addEventListener('keypress', function(e) {
+	if (e.charCode==32) {
+		if (testContent.classList.contains('hidden')&&testResult.classList.contains('hidden')) {
+			console.log('btnStart');
+			btnStart.click();
+		} else if (startScreen.classList.contains('hidden')&&testResult.classList.contains('hidden')&&abcHint.classList.contains('hidden')) {
+			console.log('btn');
+			btn.click();
+		}else if (startScreen.classList.contains('hidden')&&testResult.classList.contains('hidden')&&rotateContent.classList.contains('hidden'))
+		{ console.log('GGGGGGGGGGGGG');	
+		abcHintOk.click();
+	}else {
+		btnResult.click();
+	}
+}
+});
+/*--------------------------------------------------------------------------*/
