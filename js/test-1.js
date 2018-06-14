@@ -81,7 +81,7 @@ function timeRes(arg) {
 console.log(timer[1]);
 
 //step start-scr
-btnStart.addEventListener('click', function() {
+btnStart.addEventListener('click',function() {
 	startScreen.classList.add('hidden');
 	testContent.classList.remove('hidden');
 	timer[0].classList.add('test-timer--active');
@@ -108,8 +108,7 @@ btnStart.addEventListener('click', function() {
 	}
 });
 
-btn.addEventListener('click', function(e) {
-	console.log(e);
+btn.addEventListener('click', function() {
 	if (b<5) {
 		b++;
 		switch(b) {
@@ -223,6 +222,9 @@ btn.addEventListener('click', function(e) {
 		startScreenContent.textContent= t[1];
 	}
 });
+
+/*-----------------abcHintOk-------------------------------------------------*/
+
 abcHintOk.addEventListener('click', function() {
 	if(c<5) {
 		c++;
@@ -233,6 +235,7 @@ abcHintOk.addEventListener('click', function() {
 		console.log(c);
 	}
 });
+/*----------------------btnResult---------------------------------------------*/
 btnResult.addEventListener('click', function() {
 	if (a==3) {
 		location.replace('https://sergeyzet.github.io/ufo/');
@@ -264,9 +267,11 @@ window.addEventListener('keypress', function(e) {
 			btnStart.click();
 		} else if (startScreen.classList.contains('hidden')&&testResult.classList.contains('hidden')&&abcHint.classList.contains('hidden')) {
 			console.log('btn');
+			abcHintOk.blur();
 			btn.click();
 		}else if (startScreen.classList.contains('hidden')&&testResult.classList.contains('hidden')&&rotateContent.classList.contains('hidden'))
 		{ console.log('GGGGGGGGGGGGG');	
+		btn.blur();
 		abcHintOk.click();
 	}else {
 		btnResult.click();
