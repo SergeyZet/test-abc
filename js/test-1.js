@@ -261,7 +261,8 @@ closeHint.addEventListener('click', function() {
 });
 /*---------------------------------space----------------------------------*/
 window.addEventListener('keypress', function(e) {
-	if (e.charCode==32) {
+	if (e.charCode==32|| e.keyCode == 32 || e.which == 32) {
+		e.preventDefault ? e.preventDefault() : e.returnValue = false;
 		if (testContent.classList.contains('hidden')&&testResult.classList.contains('hidden')) {
 			console.log('btnStart');
 			btnStart.click();
