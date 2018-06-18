@@ -16,6 +16,11 @@
 .test {
   margin-bottom: 40px;
 }
+@media (max-height: 920px) {
+  .test {
+    margin-bottom: 0;
+  }
+}
 html {
   width: 100%;
   margin: 0;
@@ -954,34 +959,12 @@ p {
   color: #ffffff;
 }
 @-webkit-keyframes earth-rotate {
-  /* 0% {
-		transform: rotate(0);
-	}
-	25% {
-		transform: rotate(-90deg);
-	}
-	50% {
-		transform: rotate(-180deg);
-	}
-	50% {
-		transform: rotate(-270deg); */
   100% {
     -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg);
   }
 }
 @keyframes earth-rotate {
-  /* 0% {
-		transform: rotate(0);
-	}
-	25% {
-		transform: rotate(-90deg);
-	}
-	50% {
-		transform: rotate(-180deg);
-	}
-	50% {
-		transform: rotate(-270deg); */
   100% {
     -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg);
@@ -1067,14 +1050,16 @@ p {
     transform: translate(100%, 0);
   }
 }
-/* @keyframes scroll-2 {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-100%, 0)
-    }
-} */
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+  }
+}
 .modal-form {
   display: none;
   position: fixed;
@@ -1696,7 +1681,7 @@ p {
 }
 @media (max-height: 920px) {
   .test-wraper-start {
-    margin-top: 100px;
+    margin-top: 85px;
   }
 }
 .test-content {
@@ -1758,7 +1743,8 @@ p {
 }
 @media (max-height: 920px) {
   .test-wraper-2 {
-    margin-top: 22px;
+    margin-top: 21px;
+    padding-bottom: 20px;
   }
 }
 .test-block__lesson {
@@ -2038,6 +2024,11 @@ p {
 .test-wraper-ready {
   margin-top: 325px;
 }
+@media (max-height: 920px) {
+  .test-wraper-ready {
+    margin-top: 170px;
+  }
+}
 .test-ready {
   text-align: center;
 }
@@ -2139,6 +2130,11 @@ p {
 .test-wraper2 {
   margin-top: 235px;
 }
+@media (max-height: 920px) {
+  .test-wraper2 {
+    margin-top: 55px;
+  }
+}
 .task-test2 {
   width: 100%;
 }
@@ -2150,16 +2146,30 @@ p {
   color: #3f77eb;
   text-transform: uppercase;
 }
+@media (max-height: 920px) {
+  .task-word {
+    width: 300px;
+    font-size: 50px;
+  }
+}
 .task-word1 {
   float: left;
   text-align: right;
   margin-right: 58px;
+}
+@media (max-height: 920px) {
+  .task-word1 {
+    margin-right: 40px;
+  }
 }
 .task-word2 {
   float: right;
 }
 .test2-answer {
   text-align: center;
+}
+.test2-answer__text {
+  height: 100px;
 }
 .test2-answer__text h3 {
   margin: 0;
@@ -2178,9 +2188,12 @@ p {
   font-size: 24px;
 }
 .possible-answer {
-  font-size: 0;
   vertical-align: top;
   text-align: center;
+}
+.possible-answer__wrap {
+  display: inline-block;
+  margin-top: 30px;
 }
 .possible-answer__item {
   display: inline-block;
@@ -2196,10 +2209,13 @@ p {
   border-radius: 35px;
   vertical-align: top;
   width: 370px;
-  margin-top: 30px;
   font-size: 24px;
   color: #ffffff;
   background-color: #9d2aff;
+}
+.possible-answer__item:hover {
+  -webkit-box-shadow: 2px 2px 5px grey;
+  box-shadow: 2px 2px 5px grey;
 }
 .possible-answer__item-active {
   background-color: #3f77eb;
@@ -2222,16 +2238,17 @@ p {
   padding-right: 15px;
   padding-left: 15px;
 }
-.possible-answer--col2 .possible-answer__item {
+.possible-answer--col2 .possible-answer__wrap {
   margin-right: 30px;
 }
-.possible-answer--col2 .possible-answer__item:nth-of-type(2n) {
+.possible-answer--col2 .possible-answer__wrap:nth-of-type(2n) {
   margin-right: 0;
 }
 .possible-answer .test-btn-block {
   float: none;
   display: inline-block;
   width: auto;
+  margin-right: 0;
 }
 .test-read2 {
   margin-top: 40px;
@@ -2319,6 +2336,7 @@ p {
 @media (max-height: 920px) {
   .test-wraper-result {
     margin-top: 30px;
+    min-height: 544px;
   }
 }
 .test-wraper-result .test-read {
@@ -2326,6 +2344,11 @@ p {
 }
 .test-content .img-result {
   padding-top: 115px;
+}
+@media (max-height: 920px) {
+  .test-content .img-result {
+    padding-top: 80px;
+  }
 }
 .result-block {
   float: right;
@@ -2361,6 +2384,13 @@ p {
 .result-star {
   position: relative;
   margin-top: 10px;
+  font-size: 0;
+  vertical-align: top;
+}
+@media (max-height: 920px) {
+  .result-star {
+    margin-top: 0;
+  }
 }
 .result-star__item {
   display: inline-block;
@@ -2368,6 +2398,11 @@ p {
   line-height: 1.2;
   color: #ff8300;
   text-shadow: 2px 5px #fffc00;
+}
+@media (max-height: 920px) {
+  .result-star__item {
+    font-size: 160px;
+  }
 }
 .test-read--result {
   margin-top: 45px;
